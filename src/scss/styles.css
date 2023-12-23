@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* Color Palette */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif, FontAwesome;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #50514F;
+}
+body .container, body .shortener-form, body .shortener-result, body .shortener-url {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .container {
+  height: 100vh;
+}
+body .container .card {
+  width: 370px;
+  height: auto;
+  position: relative;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 5px solid #50514F;
+  box-shadow: 0px 0px 5px 5px #F25F5C;
+  background-color: #F25F5C;
+  color: white;
+  cursor: pointer;
+  transition: 0.25s;
+}
+body .container .card:hover {
+  box-shadow: 0px 0px 10px 10px #F25F5C;
+}
+body .container .card:hover .shortener-icon {
+  transform: translateY(-5px) rotate(8deg);
+}
+body .container .card:hover .shortener-icon img {
+  content: url(../img/hover.png);
+  scale: 1.1;
+}
+body .container .card input, body .container .card button {
+  border-width: 2px;
+  border-color: #50514F;
+}
+body .container .card .shortener-icon {
+  width: 100%;
+  height: 175px;
+  text-align: center;
+  transition: transform 0.4s ease-in-out;
+  filter: drop-shadow(2px 5px 2px #50514F);
+}
+body .container .card .shortener-icon img {
+  max-width: 100%;
+  height: 100%;
+  scale: 0.9;
+}
+body .container .card .shortener-form {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: center;
+  margin: 10px 0;
+  margin-bottom: 5px;
+}
+body .container .card .shortener-form p {
+  width: 100%;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+body .container .card .shortener-form #subtitle {
+  width: 100%;
+  display: inline-block;
+  margin-top: 5px;
+  padding: 5px 0;
+  border-top: 1px solid white;
+  font-size: 14px;
+}
+body .container .card .shortener-form .input-group {
+  margin-bottom: 5px;
+}
+body .container .card .shortener-form .input-group input {
+  font-size: 14px;
+}
+body .container .card .shortener-form .input-group input:focus:required:invalid {
+  border-color: #FFE066;
+  box-shadow: 0 0 0 0.1rem #FFE066;
+}
+body .container .card .shortener-form .input-group input:focus:required:valid {
+  border-color: #247BA0;
+  box-shadow: 0 0 0 0.1rem #247BA0;
+}
+body .container .card .shortener-form .input-group input::-moz-placeholder {
+  font-size: 16px;
+  opacity: 0.7;
+}
+body .container .card .shortener-form .input-group input::placeholder {
+  font-size: 16px;
+  opacity: 0.7;
+}
+body .container .card .shortener-form .input-group input::-moz-selection {
+  background-color: #FFE066;
+}
+body .container .card .shortener-form .input-group input::selection {
+  background-color: #FFE066;
+}
+body .container .card .shortener-form #reload {
+  background-color: #FFE066;
+  color: #50514F;
+}
+body .container .card .shortener-form #reload:hover {
+  background-color: #50514F;
+  color: white;
+}
+body .container .card .shortener-form #shorten-btn {
+  background-color: #247BA0;
+  color: white;
+}
+body .container .card .shortener-form #shorten-btn:hover {
+  background-color: #70C1B3;
+  color: #50514F;
+}
+body .container .card .shortener-result {
+  flex-wrap: wrap;
+}
+body .container .card .shortener-result .shortener-url {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  font-size: 16px;
+  font-weight: bold;
+  color: #50514F;
+  text-align: center;
+  border: 2px solid #50514F;
+  border-radius: 5px;
+}
+body .container .card .shortener-result button {
+  width: 100%;
+  height: 35px;
+  background-color: #50514F;
+  color: white;
+  margin-top: 5px;
+  line-height: 1;
+}
+body .container .card .shortener-result button:hover {
+  background-color: #FFE066;
+  color: #50514F;
+}/*# sourceMappingURL=styles.css.map */
