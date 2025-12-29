@@ -1,28 +1,51 @@
 const url = document.getElementById("url"), shortenedUrlText = document.querySelector('.shortener-url'),
-    shortenUrlButton = document.getElementById('shorten-btn'), reloadButton = document.getElementById('reload')    
+    shortenUrlButton = document.getElementById('shorten-btn'), reloadButton = document.getElementById('reload')
+
+//* API KEY expuesta intencionalmente, para uso exclusivo en este proyecto y mostrarlo en mi portafolio **
+const DEMO_KEY = 'Vuhg9RRV4UWgkvNZgAVeDnijJTVo8dMLMOq9XZ4F4ok60xDzFFT0NCnp7aSM'    
 
 window.onload = () => {
     resetElements()
 }
 
 /* Verifica si el enlace ingresado es valido y lo genera para poder copiarlo */
-const shortenUrl = () => {  
-    setTimeout(() => {
-        fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url.value)}`)
-        .then(res => { return res.status == 400 || res.status == 404 ? shortenedUrlText.textContent = 'El URL que ingresaste no es válido!!' : res.text(); })
-        .then(data => {
-            let textColor = data.includes('válido') || data.includes('Error') ? '#F25F5C' : '#247BA0'
-            shortenedUrlText.textContent = data
-            shortenedUrlText.style.color = textColor
-        })
-        .catch(error => { console.log('INFO: ', error) });
-        
-    }, 2500, shortenedUrlText.textContent = `Procesando... \u{f252}`);  
-    
-}
+const shortenUrl = async () => {
+  shortenedUrlText.textContent = 'Procesando...'
+  shortenedUrlText.style.color = '#999'
+
+  try {
+    const res = await fetch('https://api.tinyurl.com/create', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${DEMO_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        url: url.value
+      })
+    });
+
+    const data = await res.json()
+
+    if (!res.ok) {
+      shortenedUrlText.textContent = 'El URL no es válido'
+      shortenedUrlText.style.color = '#F25F5C'
+      return
+    }
+
+    shortenedUrlText.textContent = data.data.tiny_url
+    shortenedUrlText.style.color = '#247BA0'
+
+  } catch (err) {
+    console.error(err)
+    shortenedUrlText.textContent = 'Error de red'
+    shortenedUrlText.style.color = '#F25F5C'
+  }
+};
+
 shortenUrlButton.addEventListener('click', () => { 
     shortenedUrlText.style.color = '#50514F'
-    url.value != '' ? shortenUrl() : (shortenedUrlText.textContent = 'No has ingresado ningún URL...', url.focus())
+    url.value != '' ? shortenUrl() : (shortenedUrlText.textContent = 'No has ingresado ningún URL', url.focus())
 })
 
 reloadButton.addEventListener('click', () => { resetElements() })
@@ -30,9 +53,11 @@ reloadButton.addEventListener('click', () => { resetElements() })
 /* Copia el texto y modifica el texto del botón una vez seleccionado */
 const copyUrl = document.getElementById('copy-url')
 copyUrl.addEventListener('click', () => {
-    copyUrl.textContent = `Copiado correctamente | \u{f00c}`
+  if(shortenedUrlText.textContent != '' && url.value != '') {
+    copyUrl.textContent = `Copiado correctamente | \u{f14a}`
     navigator.clipboard.writeText(shortenedUrlText.textContent)
-    setTimeout(() => { copyUrl.textContent = `Copiar | \u{f24d}` }, 2800);    
+    setTimeout(() => { copyUrl.textContent = `Copiar | \u{f24d}` }, 2800); 
+  }       
 })
 
 const resetElements = () => {
