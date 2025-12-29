@@ -31,7 +31,7 @@ body .container .card {
   background-color: #F25F5C;
   color: white;
   cursor: pointer;
-  transition: 0.25s;
+  transition: box-shadow 0.25s;
 }
 body .container .card:hover {
   box-shadow: 0px 0px 10px 10px #F25F5C;
@@ -40,8 +40,11 @@ body .container .card:hover .shortener-icon {
   transform: translateY(-5px) rotate(8deg);
 }
 body .container .card:hover .shortener-icon img {
-  content: url(../img/hover.png);
-  scale: 1.1;
+  opacity: 0;
+}
+body .container .card:hover .shortener-icon::after {
+  opacity: 1;
+  transform: scale(1.1);
 }
 body .container .card input, body .container .card button {
   border-width: 2px;
@@ -50,6 +53,7 @@ body .container .card input, body .container .card button {
 body .container .card .shortener-icon {
   width: 100%;
   height: 175px;
+  position: relative;
   text-align: center;
   transition: transform 0.4s ease-in-out;
   filter: drop-shadow(2px 5px 2px #50514F);
@@ -57,13 +61,21 @@ body .container .card .shortener-icon {
 body .container .card .shortener-icon img {
   max-width: 100%;
   height: 100%;
-  scale: 0.9;
+  transition: opacity 0.25s ease;
+}
+body .container .card .shortener-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: url("../img/hover.png") center/contain no-repeat;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 body .container .card .shortener-form {
   flex-wrap: wrap;
   justify-content: space-between;
   text-align: center;
-  margin: 10px 0;
+  margin: 15px 0;
   margin-bottom: 5px;
 }
 body .container .card .shortener-form p {
@@ -138,6 +150,7 @@ body .container .card .shortener-result .shortener-url {
   text-align: center;
   border: 2px solid #50514F;
   border-radius: 5px;
+  cursor: copy;
 }
 body .container .card .shortener-result button {
   width: 100%;
