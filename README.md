@@ -4,4 +4,5 @@
 
 🔗 https://mauriciobarrueta.github.io/tinyUrl/
 
-![tiny-url](https://github.com/user-attachments/assets/e44c6d46-f9d8-41ea-a5ac-da3588c807ff)
+
+<img width="1366" height="653" alt="tiny-url" src="https://github.com/user-attachments/assets/87c76f22-bdf3-4de3-ad26-4b0069b40e7f" />
