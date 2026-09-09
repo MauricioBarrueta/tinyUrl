@@ -1,6 +1,6 @@
-🇲🇽 Sitio web desarrollado con JavaScript, SCSS y Bootstrap, publicado mediante GitHub Pages, conectado a la API de TinyURL (tinyurl.com/app/dev).
+🇲🇽 Sitio web desarrollado con JavaScript, SCSS y Bootstrap, publicado mediante GitHub Pages y conectado a la API de TinyURL.
 
-🇺🇸 Website developed with JavaScript, SCSS and Bootstrap, published via GitHub Pages, connected to the TinyURL API (tinyurl.com/app/dev).
+🇺🇸 Website developed with JavaScript, using SCSS and Bootstrap, deployed on GitHub Pages and connected to the TinyURL API.
 
 🔗 https://mauriciobarrueta.github.io/tinyUrl/
 
